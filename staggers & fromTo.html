@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staggers & FromTo</title>
+    <link rel="stylesheet" href="styles/staggers & fromTo.css">
+</head>
+<body>
+<section>
+    <div class="mask">
+        <img alt="" src="img/1.webp" height="600" width="400"/>
+        <p>Modern</p>
+    </div>
+    <div class="mask">
+        <img alt="" src="img/5.webp" height="500" width="400"/>
+        <p>Unique</p>
+    </div>
+    <div class="mask">
+        <img alt="" src="img/7.jpeg" height="846" width="563"/>
+        <p>Fashion</p>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.set('img',{
+            yPercent:-100
+        })
+        gsap.set('p',{
+            opacity:0
+        })
+
+        gsap.to('img',{
+            yPercent:0,
+            scale:1.2,
+            delay:0.5,
+            duration:1.5,
+            stagger:0.1,
+            ease:"power4.inOut",
+            onComplete:scaleDownAndFadeIn
+        })
+
+
+        function scaleDownAndFadeIn(){
+            gsap.to('img',{
+                scale:1,
+                duration:1
+            })
+            // gsap.to('p',{
+            //     opacity:1,
+            //     stagger:0.3,
+            //     y:50,
+            //     duration:2
+            // })
+            gsap.fromTo('p',{
+                opacity:0,
+                y:-50
+            },{
+                opacity:1,
+                stagger:0.3,
+                y:50,
+                duration:2
+            })
+        }
+
+    });
+</script>
+</body>
+</html>
