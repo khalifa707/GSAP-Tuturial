@@ -2,9 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Scrolling SplitType Reveal</title>
+  <link rel="stylesheet" href="styles/Scrolling SplitType Reveal.css">
 </head>
 <body>
+<section>
+  <span>001</span>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dicta enim expedita id magnam optio porro quae vel! Eius, libero!</p>
+  <img src="img/heritage01.jpg" alt="">
+</section>
 
+<section>
+  <span>002</span>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At autem explicabo labore pariatur porro tenetur vero. A ab aperiam est!</p>
+  <img src="img/heritage04.jpg" alt="">
+</section>
+
+<section>
+  <span>003</span>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti est itaque nam ullam voluptates. Architecto consectetur dignissimos ipsa repellendus soluta.</p>
+  <img src="img/heritage03.jpg" alt="">
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/split-type"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    gsap.registerPlugin(ScrollTrigger, SplitType);
+
+    // Initialize Lenis
+    const lenis = new Lenis();
+
+    // Use requestAnimationFrame to continuously update the scroll
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    const texts = gsap.utils.toArray('section p');
+    texts.forEach(text => {
+      const img = text.nextElementSibling;
+      const splitText = new SplitType(text, { types: 'chars' });
+
+      const tl = gsap.timeline({
+        scrollTrigger:{
+          trigger: text,
+          start: 'top 80%',
+          end: 'bottom center',
+          toggleActions: 'play play none reverse'
+        }
+      });
+
+      tl.from(splitText.chars, {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        stagger: 0.005,
+        ease: 'power2.out'
+      });
+    });
+  });
+
+</script>
 </body>
 </html>
