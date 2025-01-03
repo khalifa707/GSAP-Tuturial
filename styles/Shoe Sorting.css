@@ -45,4 +45,18 @@ button {
   font-size: 0.85em;
 }
 
+.sort {
+  flex-direction: column;
+}
+.sort .card {
+  display: flex;
+  gap: 2em;
+}
+.sort .card img {
+  width: 200px;
+}
+.sort .card h2 {
+  margin: 0;
+}
+
 /*# sourceMappingURL=Shoe%20Sorting.css.map */

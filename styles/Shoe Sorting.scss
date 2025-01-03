@@ -44,3 +44,17 @@ button{
     }
   }
 }
+.sort{
+  flex-direction: column;
+  .card{
+    display: flex;
+    gap: 2em;
+
+    img{
+      width: 200px;
+    }
+    h2{
+      margin: 0;
+    }
+  }
+}
