@@ -1,0 +1,44 @@
+/* Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+/* Grid overlay */
+.load_grid {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Adjust number of columns */
+  grid-template-rows: repeat(10, 1fr);   /* Adjust number of rows */
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.load_grid-item {
+  background: black; /* Change color for effect */
+  opacity: 0;
+}
+
+/* Content styling */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+a {
+  margin-top: 20px;
+  color: blue;
+  text-decoration: none;
+  font-size: 20px;
+}
