@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Mask Reveal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+            rel="stylesheet"/>
+    <link rel="stylesheet" href="styles/Text Mask Reveal.css">
+</head>
+<body>
+<nav>
+    <h1 class="logo">Y3 Bags.</h1>
+</nav>
+<div class="hero-section">
+    <img src="/img/01hero.jpg" class="hero-img" alt="" />
+    <div class="cta">
+        <div class="cta-text">
+            <h2><span class="cta1">One</span></h2>
+            <h2><span class="cta2">stop</span></h2>
+            <h2><span class="cta3">shop</span></h2>
+        </div>
+        <div class="cta-text">
+            <h2><span class="cta4">to</span></h2>
+            <h2><span class="cta5">perfect</span></h2>
+            <h2><span class="cta6">Bag.</span></h2>
+        </div>
+        <button class="cta-btn">Explore</button>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<!-- Minified UMD bundle -->
+<script src="https://unpkg.com/split-type"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        // gsap code here!
+
+        const tl = gsap.timeline({
+            defaults:{duration:0.75, ease:"power3.easeOut"}
+        })
+        tl.fromTo(".hero-img",{scale:1.3},{scale:1,delay:0.35,duration:2,ease:"power4.out"})
+        tl.fromTo('.cta1',{x:110,opacity:0},{x:0,opacity:1,ease:"power3.out"},"<20%")
+        tl.fromTo('.cta2',{x:-110,opacity:0},{x:0,opacity:1,ease:"power3.out"},"<20%")
+        tl.fromTo('.cta3',{y:110,opacity:0},{y:0,opacity:1,ease:"power3.out"},"<20%")
+        tl.fromTo('.cta4',{x:110,opacity:0},{x:0,opacity:1,ease:"power3.out"},"<20%")
+        tl.fromTo('.cta5',{x:-110,opacity:0},{x:0,opacity:1,ease:"power3.out"},"<20%")
+        tl.fromTo('.cta6',{y:110,opacity:0},{y:0,opacity:1,ease:"power3.out"},"<")
+
+        const text = new SplitType('.logo')
+        gsap.from(text.chars,{
+            y:40,
+            opacity:0,
+            skewX:30,
+            stagger:0.3
+        })
+
+
+
+    });
+
+</script>
+</body>
+</html>
